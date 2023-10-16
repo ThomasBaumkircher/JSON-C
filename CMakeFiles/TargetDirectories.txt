@@ -1,0 +1,3 @@
+/home/thoma/source/JSON-C/CMakeFiles/Test.dir
+/home/thoma/source/JSON-C/CMakeFiles/edit_cache.dir
+/home/thoma/source/JSON-C/CMakeFiles/rebuild_cache.dir

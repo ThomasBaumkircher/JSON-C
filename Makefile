@@ -57,10 +57,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/thoma/source/JSON-C
+CMAKE_SOURCE_DIR = /home/thoma/source/SYT-Mo/02/JSON-C
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/thoma/source/JSON-C
+CMAKE_BINARY_DIR = /home/thoma/source/SYT-Mo/02/JSON-C
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -87,9 +87,11 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/thoma/source/JSON-C/CMakeFiles /home/thoma/source/JSON-C//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/thoma/source/SYT-Mo/02/JSON-C/CMakeFiles /home/thoma/source/SYT-Mo/02/JSON-C//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/thoma/source/JSON-C/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/thoma/source/SYT-Mo/02/JSON-C/CMakeFiles 0
+# Custom gcc command to compile the object file
+	gcc -Wall -Wextra -Werror -pedantic -std=c99 -c -o CJSON.o src/Parser.c
 .PHONY : all
 
 # The main clean target
@@ -129,6 +131,19 @@ Test/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Test.dir/build.make CMakeFiles/Test.dir/build
 .PHONY : Test/fast
 
+#=============================================================================
+# Target rules for targets named CJSON
+
+# Build rule for target.
+CJSON: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CJSON
+.PHONY : CJSON
+
+# fast build rule for target.
+CJSON/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CJSON.dir/build.make CMakeFiles/CJSON.dir/build
+.PHONY : CJSON/fast
+
 Test.o: Test.c.o
 .PHONY : Test.o
 
@@ -159,6 +174,7 @@ src/Parser.o: src/Parser.c.o
 # target to build an object file
 src/Parser.c.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Test.dir/build.make CMakeFiles/Test.dir/src/Parser.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CJSON.dir/build.make CMakeFiles/CJSON.dir/src/Parser.c.o
 .PHONY : src/Parser.c.o
 
 src/Parser.i: src/Parser.c.i
@@ -167,6 +183,7 @@ src/Parser.i: src/Parser.c.i
 # target to preprocess a source file
 src/Parser.c.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Test.dir/build.make CMakeFiles/Test.dir/src/Parser.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CJSON.dir/build.make CMakeFiles/CJSON.dir/src/Parser.c.i
 .PHONY : src/Parser.c.i
 
 src/Parser.s: src/Parser.c.s
@@ -175,6 +192,7 @@ src/Parser.s: src/Parser.c.s
 # target to generate assembly for a file
 src/Parser.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Test.dir/build.make CMakeFiles/Test.dir/src/Parser.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CJSON.dir/build.make CMakeFiles/CJSON.dir/src/Parser.c.s
 .PHONY : src/Parser.c.s
 
 # Help Target
@@ -185,6 +203,7 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... CJSON"
 	@echo "... Test"
 	@echo "... Test.o"
 	@echo "... Test.i"

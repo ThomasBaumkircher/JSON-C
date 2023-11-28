@@ -1,4 +1,53 @@
 #include "../include/Parser.h"
+#include <stdio.h>
+
+
+char *
+compose_json_str(struct JsonData *data)
+{
+  char *jsonStr = (char *) malloc(sizeof(char) * JSON_MAX_LEN);
+  char *currChar = jsonStr;
+
+  int isArr = (strcmp(data->parent->value, "JSON_ARRAY") == 0);
+  if (isArr) {
+      currChar += sprintf(currChar, "[");
+  } else {
+      currChar += sprintf(currChar, "{");
+  }
+
+  while (data != NULL) {
+    if (data->child != NULL) {
+      if (strlen(data->key) == 0) {
+        currChar += sprintf(currChar, "%s", compose_json_str(data->child));
+      }
+      else {
+        currChar += sprintf(currChar, "%s:%s", data->key, compose_json_str(data->child));
+      }
+    }
+    else {
+      if (strlen(data->key) == 0) {
+        currChar += sprintf(currChar, "%s", data->value);
+      }
+      else {
+        currChar += sprintf(currChar, "%s:%s", data->key, data->value);
+      }
+    }
+
+    if (data->next != NULL) {
+      currChar += sprintf(currChar, ",");
+    }
+
+    data = data->next;
+  }
+
+  if (isArr) {
+      currChar += sprintf(currChar, "]");
+  } else {
+      currChar += sprintf(currChar, "}");
+  }
+
+  return jsonStr;
+}
 
 
 struct JsonData *
@@ -23,6 +72,7 @@ fetch_json_data(struct JsonParser *parser)
   struct JsonData *currData = (struct JsonData *) malloc(sizeof(struct JsonData) * 1);
   currData->next = NULL;
   currData->child = NULL;
+  currData->parent = NULL;
   struct JsonData *dataHead = currData;
 
   currData->key = (char *) malloc(sizeof(char) * JSON_MAX_STR_LEN);
@@ -49,6 +99,9 @@ fetch_json_data(struct JsonParser *parser)
       strcpy(currData->value, "JSON_OBJECT");
 
       struct JsonData *childResult = fetch_json_data(parser);
+      if (childResult != NULL) {
+        childResult->parent = currData;
+      }
       currData->child = childResult;
       parser->currStruct = currStruct;
     }
@@ -61,6 +114,9 @@ fetch_json_data(struct JsonParser *parser)
       strcpy(currData->value, "JSON_ARRAY");
 
       struct JsonData *childResult = fetch_json_data(parser);
+      if (childResult != NULL) {
+        childResult->parent = currData;
+      }
       currData->child = childResult;
       parser->currStruct = currStruct;
     }
@@ -100,10 +156,24 @@ fetch_json_data(struct JsonParser *parser)
 
 
 struct JsonData *
-fetch_res(struct JsonData *data, const char *key)
+fetch_res(struct JsonData *data, const char *key_param)
 {
-  if (data == NULL) {
+  if (data == NULL || key_param == NULL) {
     return NULL;
+  }
+
+  if (key_param[0] == '\0') {
+    return data;
+  }
+
+  char *key = (char *) malloc(sizeof(char) * JSON_MAX_STR_LEN);
+  strcpy(key, key_param);
+
+  if (key[0] == '\"') {
+    key++;
+  }
+  if (key[strlen(key) - 1] == '\"') {
+    key[strlen(key) - 1] = '\0';
   }
 
   struct JsonData *currData = data->child;
@@ -113,10 +183,22 @@ fetch_res(struct JsonData *data, const char *key)
   char *currKey = strtok(keyCopy, JSON_DEPTH_DELIMITER);
 
   while (currData != NULL) {
+    if(currData->key[0] == '\"') {
+      currData->key++;
+    }
+    if (currData->key[strlen(currData->key) - 1] == '\"') {
+      currData->key[strlen(currData->key) - 1] = '\0';
+    }
+
     if ((int) strcmp(currData->key, currKey) == 0) {
-      if (currData->child != NULL && strtok(NULL, JSON_DEPTH_DELIMITER) != NULL) {
+      if ((currData->child != NULL) && (strcmp(currData->value, "JSON_ARRAY") != 0)) {
         return fetch_res(currData, key + strlen(currKey) + 1);
       }
+
+      if (strcmp(currData->value, "null") == 0) {
+        return NULL;
+      }
+
       return currData;
     }
     currData = currData->next;
@@ -138,25 +220,52 @@ fetch_str(const char *data, const char *key)
 }
 
 
-char **
+void **
 fetch_arr(const char *data, const char *key)
 {
-  struct JsonData *currData = fetch_res(parse_json_str(data), key)->child;
-
-  if (currData == NULL) {
+  if (data == NULL || key == NULL) {
     return NULL;
   }
+  struct JsonData *parsed = parse_json_str(data);
+  
+  if (parsed == NULL || parsed->child == NULL) {
+    return NULL;
+  }
+  struct JsonData *res = fetch_res(parsed, key);
 
-  char **arr = (char **) malloc(sizeof(char *) * JSON_MAX_ARR_LEN);
+  if (res == NULL) {
+    return NULL;
+  }
+  struct JsonData *currData = res->child;
+
+  if (currData == NULL || currData->child == NULL) {
+    return NULL;
+  }
+  void **arr = (void **) malloc(sizeof(void *) * JSON_MAX_ARR_LEN);
   int count = 0;
 
   while (currData != NULL) {
-    arr[count] = currData->key;
+    arr[count] = (void *) currData->value;
+    if (strcmp(currData->value, "JSON_OBJECT") == 0) {
+      arr[count] = (void *) compose_json_str(currData->child);
+    }
     count++;
     currData = currData->next;
   }
 
   return arr;
+}
+
+
+char *
+fetch_obj(const char *data, const char *key)
+{
+  struct JsonData *currData = fetch_res(parse_json_str(data), key);
+  if (currData == NULL) {
+    return NULL;
+  }
+
+  return compose_json_str(currData->child);
 }
 
 
@@ -184,7 +293,7 @@ fetch_floating(const char *data, const char *key)
 }
 
 
-int
+bool
 fetch_bool(const char *data, const char *key)
 {
   struct JsonData *currData = fetch_res(parse_json_str(data), key);
@@ -193,10 +302,10 @@ fetch_bool(const char *data, const char *key)
   }
 
   if ((int) strcmp(currData->value, "true") == 0) {
-    return 1;
+    return true;
   }
 
-  return 0;
+  return false;
 }
 
 

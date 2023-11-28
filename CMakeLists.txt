@@ -9,3 +9,4 @@ set(CMAKE_CXX_COMPILER "gcc")
 set(CMAKE_CXX_FLAGS "-g")
 
 add_executable(Test Test.c src/Parser.c)
+add_library(CJSON OBJECT src/Parser.c)

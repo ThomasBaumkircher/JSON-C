@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/thoma/source/JSON-C
+CMAKE_SOURCE_DIR = /home/thoma/source/SYT-Mo/02/JSON-C
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/thoma/source/JSON-C
+CMAKE_BINARY_DIR = /home/thoma/source/SYT-Mo/02/JSON-C
 
 # Include any dependencies generated for this target.
 include CMakeFiles/Test.dir/depend.make
@@ -72,30 +72,30 @@ include CMakeFiles/Test.dir/flags.make
 CMakeFiles/Test.dir/Test.c.o: CMakeFiles/Test.dir/flags.make
 CMakeFiles/Test.dir/Test.c.o: Test.c
 CMakeFiles/Test.dir/Test.c.o: CMakeFiles/Test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/thoma/source/JSON-C/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/Test.dir/Test.c.o"
-	/sbin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/Test.dir/Test.c.o -MF CMakeFiles/Test.dir/Test.c.o.d -o CMakeFiles/Test.dir/Test.c.o -c /home/thoma/source/JSON-C/Test.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/thoma/source/SYT-Mo/02/JSON-C/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/Test.dir/Test.c.o"
+	/sbin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/Test.dir/Test.c.o -MF CMakeFiles/Test.dir/Test.c.o.d -o CMakeFiles/Test.dir/Test.c.o -c /home/thoma/source/SYT-Mo/02/JSON-C/Test.c
 
 CMakeFiles/Test.dir/Test.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/Test.dir/Test.c.i"
-	/sbin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/thoma/source/JSON-C/Test.c > CMakeFiles/Test.dir/Test.c.i
+	/sbin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/thoma/source/SYT-Mo/02/JSON-C/Test.c > CMakeFiles/Test.dir/Test.c.i
 
 CMakeFiles/Test.dir/Test.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/Test.dir/Test.c.s"
-	/sbin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/thoma/source/JSON-C/Test.c -o CMakeFiles/Test.dir/Test.c.s
+	/sbin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/thoma/source/SYT-Mo/02/JSON-C/Test.c -o CMakeFiles/Test.dir/Test.c.s
 
 CMakeFiles/Test.dir/src/Parser.c.o: CMakeFiles/Test.dir/flags.make
 CMakeFiles/Test.dir/src/Parser.c.o: src/Parser.c
 CMakeFiles/Test.dir/src/Parser.c.o: CMakeFiles/Test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/thoma/source/JSON-C/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/Test.dir/src/Parser.c.o"
-	/sbin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/Test.dir/src/Parser.c.o -MF CMakeFiles/Test.dir/src/Parser.c.o.d -o CMakeFiles/Test.dir/src/Parser.c.o -c /home/thoma/source/JSON-C/src/Parser.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/thoma/source/SYT-Mo/02/JSON-C/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/Test.dir/src/Parser.c.o"
+	/sbin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/Test.dir/src/Parser.c.o -MF CMakeFiles/Test.dir/src/Parser.c.o.d -o CMakeFiles/Test.dir/src/Parser.c.o -c /home/thoma/source/SYT-Mo/02/JSON-C/src/Parser.c
 
 CMakeFiles/Test.dir/src/Parser.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/Test.dir/src/Parser.c.i"
-	/sbin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/thoma/source/JSON-C/src/Parser.c > CMakeFiles/Test.dir/src/Parser.c.i
+	/sbin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/thoma/source/SYT-Mo/02/JSON-C/src/Parser.c > CMakeFiles/Test.dir/src/Parser.c.i
 
 CMakeFiles/Test.dir/src/Parser.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/Test.dir/src/Parser.c.s"
-	/sbin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/thoma/source/JSON-C/src/Parser.c -o CMakeFiles/Test.dir/src/Parser.c.s
+	/sbin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/thoma/source/SYT-Mo/02/JSON-C/src/Parser.c -o CMakeFiles/Test.dir/src/Parser.c.s
 
 # Object files for target Test
 Test_OBJECTS = \
@@ -109,7 +109,7 @@ Test: CMakeFiles/Test.dir/Test.c.o
 Test: CMakeFiles/Test.dir/src/Parser.c.o
 Test: CMakeFiles/Test.dir/build.make
 Test: CMakeFiles/Test.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/thoma/source/JSON-C/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking C executable Test"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/thoma/source/SYT-Mo/02/JSON-C/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking C executable Test"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Test.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -121,6 +121,6 @@ CMakeFiles/Test.dir/clean:
 .PHONY : CMakeFiles/Test.dir/clean
 
 CMakeFiles/Test.dir/depend:
-	cd /home/thoma/source/JSON-C && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/thoma/source/JSON-C /home/thoma/source/JSON-C /home/thoma/source/JSON-C /home/thoma/source/JSON-C /home/thoma/source/JSON-C/CMakeFiles/Test.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /home/thoma/source/SYT-Mo/02/JSON-C && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/thoma/source/SYT-Mo/02/JSON-C /home/thoma/source/SYT-Mo/02/JSON-C /home/thoma/source/SYT-Mo/02/JSON-C /home/thoma/source/SYT-Mo/02/JSON-C /home/thoma/source/SYT-Mo/02/JSON-C/CMakeFiles/Test.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : CMakeFiles/Test.dir/depend
 

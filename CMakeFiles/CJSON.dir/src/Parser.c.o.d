@@ -1,4 +1,4 @@
-CMakeFiles/Test.dir/src/Parser.c.o: \
+CMakeFiles/CJSON.dir/src/Parser.c.o: \
  /home/thoma/source/SYT-Mo/02/JSON-C/src/Parser.c \
  /usr/include/stdc-predef.h \
  /home/thoma/source/SYT-Mo/02/JSON-C/src/../include/Parser.h \

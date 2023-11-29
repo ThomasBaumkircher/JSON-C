@@ -5,6 +5,10 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
+
+#include "Composer.h"
+
+
 // JSON-data structure specifiers
 #define JSON_ARRAY_START          '['
 #define JSON_ARRAY_END            ']'
@@ -65,4 +69,3 @@ double fetch_floating(const char *data, const char *key);
 bool fetch_bool(const char *data, const char *key);
 void *fetch_struct(const char *data, const char **keys);
 char *remove_isws(const char *str);
-char *compose_json_str(struct JsonData *data);

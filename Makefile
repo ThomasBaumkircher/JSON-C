@@ -91,7 +91,8 @@ all: cmake_check_build_system
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/thoma/source/SYT-Mo/02/JSON-C/CMakeFiles 0
 # Custom gcc command to compile the object file
-	gcc -Wall -Wextra -Werror -pedantic -std=c99 -c -o CJSON.o src/Parser.c
+	gcc -Wall -Wextra -Werror -pedantic -std=c99 -c -o CJSON_Parser.o src/Parser.c
+	gcc -Wall -Wextra -Werror -pedantic -std=c99 -c -o CJSON_Composer.o src/Composer.c
 .PHONY : all
 
 # The main clean target

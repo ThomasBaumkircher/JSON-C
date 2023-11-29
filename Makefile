@@ -1,5 +1,5 @@
 # The main all target
-all: Parser.o Composer.o
+all: init Parser.o Composer.o
 	gcc -shared -o libcjson.so build/Parser.o build/Composer.o
 
 	sudo cp libcjson.so /usr/lib
@@ -14,7 +14,6 @@ Composer.o: src/Composer.c
 
 init:
 	mkdir -p build
-	mkdir -p include
 
 clean:
 	rm -rf build/*

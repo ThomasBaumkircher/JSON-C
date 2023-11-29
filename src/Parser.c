@@ -172,7 +172,7 @@ fetch_str(const char *data, const char *key)
 }
 
 
-void **
+char **
 fetch_arr(const char *data, const char *key)
 {
   if (data == NULL || key == NULL) {
@@ -193,13 +193,13 @@ fetch_arr(const char *data, const char *key)
   if (currData == NULL || currData->child == NULL) {
     return NULL;
   }
-  void **arr = (void **) malloc(sizeof(void *) * JSON_MAX_ARR_LEN);
+  char **arr = (char **) malloc(sizeof(char *) * JSON_MAX_ARR_LEN);
   int count = 0;
 
   while (currData != NULL) {
-    arr[count] = (void *) currData->value;
+    arr[count] = (char *) currData->value;
     if (strcmp(currData->value, "JSON_OBJECT") == 0) {
-      arr[count] = (void *) compose_json_str(currData->child);
+      arr[count] = (char *) compose_json_str(currData->child);
     }
     count++;
     currData = currData->next;

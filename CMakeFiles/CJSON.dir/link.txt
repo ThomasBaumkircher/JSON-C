@@ -1,1 +1,0 @@
-/sbin/cc -fPIC -shared -Wl,-soname,libCJSON.so -o libCJSON.so CMakeFiles/CJSON.dir/src/Parser.c.o 

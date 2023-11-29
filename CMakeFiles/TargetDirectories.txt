@@ -1,4 +1,0 @@
-/home/thoma/source/SYT-Mo/02/JSON-C/CMakeFiles/Test.dir
-/home/thoma/source/SYT-Mo/02/JSON-C/CMakeFiles/CJSON.dir
-/home/thoma/source/SYT-Mo/02/JSON-C/CMakeFiles/edit_cache.dir
-/home/thoma/source/SYT-Mo/02/JSON-C/CMakeFiles/rebuild_cache.dir

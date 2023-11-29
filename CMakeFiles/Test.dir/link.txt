@@ -1,1 +1,0 @@
-/sbin/cc CMakeFiles/Test.dir/Test.c.o CMakeFiles/Test.dir/src/Parser.c.o -o Test 

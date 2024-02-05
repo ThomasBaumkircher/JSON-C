@@ -1,0 +1,53 @@
+[
+  {
+    "arguments": [
+      "/sbin/gcc",
+      "-Iinclude",
+      "-Wall",
+      "-Werror",
+      "-pedantic",
+      "-fpic",
+      "-c",
+      "-o",
+      "build/Parser.o",
+      "src/Parser.c"
+    ],
+    "directory": "/home/thoma/source/JSON-C",
+    "file": "/home/thoma/source/JSON-C/src/Parser.c",
+    "output": "/home/thoma/source/JSON-C/build/Parser.o"
+  },
+  {
+    "arguments": [
+      "/sbin/gcc",
+      "-Iinclude",
+      "-Wall",
+      "-Werror",
+      "-pedantic",
+      "-fpic",
+      "-c",
+      "-o",
+      "build/Composer.o",
+      "src/Composer.c"
+    ],
+    "directory": "/home/thoma/source/JSON-C",
+    "file": "/home/thoma/source/JSON-C/src/Composer.c",
+    "output": "/home/thoma/source/JSON-C/build/Composer.o"
+  },
+  {
+    "arguments": [
+      "/sbin/gcc",
+      "-Iinclude",
+      "-Wall",
+      "-Werror",
+      "-pedantic",
+      "-fpic",
+      "-c",
+      "-o",
+      "build/Dict.o",
+      "src/Dict.c"
+    ],
+    "directory": "/home/thoma/source/JSON-C",
+    "file": "/home/thoma/source/JSON-C/src/Dict.c",
+    "output": "/home/thoma/source/JSON-C/build/Dict.o"
+  }
+]

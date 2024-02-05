@@ -2,3 +2,5 @@
 
 
 #include "Parser.h"
+#include "Composer.h"
+#include "Dict.h"

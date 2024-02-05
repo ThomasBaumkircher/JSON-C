@@ -1,5 +1,5 @@
-#include "../include/Composer.h"
-#include "../include/Parser.h"
+#include "Composer.h"
+#include "Parser.h"
 
 
 char *
